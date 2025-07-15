@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/styles.css" />
     <title>Hello WSL</title>
   </head>
   <body>
+    <!--
+    TODO:
+
+    - fix typos ✅
+    - add rel="noreferrer" to external _blank links
+    -->
     <header>
       <h1>Theo's Guide to WSL</h1>
       <p>
@@ -29,7 +36,7 @@
           Once the installation has been completed you'll be prompted to create
           a user account and password.
           <strong>This has no effect on any of your Windows things.</strong>
-          This created user account will have <code>sudo</code> priviliges so in
+          This created user account will have <code>sudo</code> privileges so in
           short it's an admin account... You can do anything with it if you use
           that <code>sudo</code> keyword.
         </p>
@@ -58,7 +65,7 @@
             for Windows
             <ul>
               <li>
-                Still in Windows open an adminstrator command prompt and run
+                Still in Windows open an administrator command prompt and run
                 <code>SETX WSLENV %WSLENV%:GIT_EXEC_PATH/wp</code> to update the
                 <code>WSLENV</code> environment variable with some value Git
                 requires

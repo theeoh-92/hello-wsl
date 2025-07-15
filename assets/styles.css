@@ -1,0 +1,68 @@
+/*
+TODO:
+
+- add font stack
+- implement fluid typography
+*/
+
+:root {
+  --bg-1: #1e1e1e;
+  --bg-2: #2d2d2d;
+  --bg-3: #454545;
+  --primary-1: #2e8b57;
+  --primary-2: #61bc84;
+  --accent-1: #8fbc8f;
+  --accent-2: #345e37;
+  --text-1: #fff;
+  --text-2: #e0e0e0;
+}
+
+body {
+  background: var(--bg-1);
+  color: var(--text-2);
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 64rem) {
+  body {
+    padding: 0;
+  }
+}
+
+h1,
+h2,
+strong,
+em {
+  color: var(--text-1);
+}
+
+p,
+ol,
+ul {
+  line-height: 1.4;
+}
+
+ol > li {
+  margin-bottom: 0.75rem;
+}
+
+code {
+  color: var(--accent-1);
+}
+
+a {
+  color: var(--primary-1);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+a:visited {
+  color: var(--accent-2);
+}
+a:hover,
+a:active,
+a:focus {
+  color: var(--primary-2);
+  text-decoration: underline;
+}
