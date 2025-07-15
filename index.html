@@ -6,20 +6,163 @@
     <title>Hello WSL</title>
   </head>
   <body>
-    <h1>Hello WSL 😁</h1>
-    <p>
-      I've just installed WSL and launched a web doc using Live Server. Lorem
-      ipsum dolor sit amet, consectetur adipisicing elit. Facilis esse, tempore
-      culpa, omnis, non natus quas laboriosam ipsa laudantium quaerat repellat
-      neque quo atque odit distinctio suscipit numquam dignissimos veritatis.
-    </p>
-    <h2>Git on WSL</h2>
-    <p>
-      I just installed Git on WSL only with a Windows based GCM and it all seems
-      to be working just fine... Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Accusamus, repellat cum, voluptatum delectus eius unde
-      qui nihil sequi, dolor reprehenderit sapiente placeat optio earum odio
-      libero expedita vero minus ipsa.
-    </p>
+    <header>
+      <h1>Theo's Guide to WSL</h1>
+      <p>
+        <strong>Disclaimer:</strong> I'm simply recalling the steps I took from
+        memory so everything might not be perfect. At the end of all this there
+        will be a references section to documentation that served useful to me
+        during this first time setup of WSL. Also note that as I continue to
+        extend my WSL "setup" if you want to call it that, I will expand on it
+        in this doc.
+      </p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Installing WSL</h2>
+        <p>
+          Simply run the command <code>wsl --install</code> and bam 💥 you have
+          WSL installed along with the Ubuntu distro.
+        </p>
+        <p>
+          Once the installation has been completed you'll be prompted to create
+          a user account and password.
+          <strong>This has no effect on any of your Windows things.</strong>
+          This created user account will have <code>sudo</code> priviliges so in
+          short it's an admin account... You can do anything with it if you use
+          that <code>sudo</code> keyword.
+        </p>
+      </section>
+      <section>
+        <h2>Installing Git on WSL only</h2>
+        <ol>
+          <li>Run the command <code>sudo apt-get install git</code></li>
+          <li>
+            Setup your git config file by running the commands:
+            <ul>
+              <li><code>git config --global user.name "Theo"</code></li>
+              <li>
+                <code>git config --global user.email "theeoh@proton.me"</code>
+              </li>
+              <li><code>git config --global init.defaultBranch main</code></li>
+            </ul>
+          </li>
+          <li>
+            Install
+            <a
+              href="https://github.com/git-ecosystem/git-credential-manager/releases"
+              target="_blank"
+              >Git Credential Manager</a
+            >
+            for Windows
+            <ul>
+              <li>
+                Still in Windows open an adminstrator command prompt and run
+                <code>SETX WSLENV %WSLENV%:GIT_EXEC_PATH/wp</code> to update the
+                <code>WSLENV</code> environment variable with some value Git
+                requires
+              </li>
+            </ul>
+          </li>
+          <li>
+            Run
+            <code
+              >git config --global credential.helper "/mnt/c/Program\ Files\
+              \(x86\)/Git\ Credential\ Manager/git-credential-manager.exe"</code
+            >
+            to set GCM as the Git credential helper
+          </li>
+          <li>
+            Run <code>ssh-keygen -t ed25519 -C "theeoh@proton.me"</code> to
+            create an SSH key.
+            <em
+              >There will be some setup afterwards but just enter through all
+              this and leave as defaults</em
+            >
+          </li>
+          <li>
+            For sanity run the following 2 commands:
+            <ul>
+              <li><code>eval "$(ssh-agent -s)"</code></li>
+              <li><code>ssh-add ~/.ssh/id_ed25519</code></li>
+            </ul>
+          </li>
+          <li>
+            Finally add the SSH key to your
+            <a href="https://github.com/settings/keys" target="_blank"
+              >SSH keys</a
+            >
+            in your GitHub account.
+            <em
+              >To easily get your SSH key run <code>cd ~/.ssh</code> and
+              <code>cat id_ed25519.pub</code> then simply copy and paste into
+              GitHub</em
+            >
+          </li>
+          <li>
+            You can test your SSH setup's success by running
+            <code>ssh -T git@github.com</code>...
+            <em
+              >At first you might see a warning which asks you yes/no, just say
+              yes and press enter then run the command again</em
+            >
+            and if you see something like
+            <code
+              >Hi theeoh-92! You've successfully authenticated, but GitHub does
+              not provide shell access</code
+            >
+            You've done it correctly
+          </li>
+        </ol>
+        <p>
+          From what I can remember I think that is the last of the Git stuff.
+          From here on out you should be good to go with version control and
+          pushing to GitHub etc...
+        </p>
+      </section>
+      <section>
+        <h2>VS Code on Windows Setup</h2>
+        <p>Simply install the WSL extension inside VS Code and you good 🍻</p>
+      </section>
+      <section>
+        <h2>Documentation</h2>
+        <ol>
+          <li>
+            <a
+              href="https://learn.microsoft.com/en-us/windows/wsl/install"
+              target="_blank"
+              >Installing WSL</a
+            >
+          </li>
+          <li>
+            WSL-based Git related documentation:
+            <ul>
+              <li>
+                <a
+                  href="https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git"
+                  target="_blank"
+                  >Installing Git</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/git-ecosystem/git-credential-manager/blob/main/docs/wsl.md#configuring-wsl-without-git-for-windows"
+                  target="_blank"
+                  >GCM setup</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent"
+                  target="_blank"
+                  >SSH setup</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    </main>
   </body>
 </html>
