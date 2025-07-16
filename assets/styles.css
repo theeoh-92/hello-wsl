@@ -1,7 +1,7 @@
 /*
 TODO:
 
-- add font stack
+- add font stack ✅
 - implement fluid typography
 */
 
@@ -23,6 +23,7 @@ body {
   max-width: 62rem;
   margin: 0 auto;
   padding: 0 1rem;
+  font-family: "Ubuntu Mono", monospace;
 }
 
 @media (min-width: 64rem) {
