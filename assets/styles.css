@@ -2,9 +2,10 @@
 TODO:
 
 - add font stack ✅
-- implement fluid typography
+- implement fluid typography ✅
 */
 
+/* COLOR PALETTE */
 :root {
   --bg-1: #1e1e1e;
   --bg-2: #2d2d2d;
@@ -17,13 +18,62 @@ TODO:
   --text-2: #e0e0e0;
 }
 
+/* TYPOGRAPHY */
+body {
+  font-family: "Ubuntu Mono", monospace;
+  color: var(--text-2);
+}
+h1,
+h2,
+strong,
+em {
+  color: var(--text-1);
+}
+h1 {
+  font-size: 2.986rem;
+  font-size: clamp(
+    2.986rem,
+    2.5912380952380953rem + 1.9738095238095232vw,
+    3.815rem
+  );
+}
+h2 {
+  font-size: 2.488rem;
+  font-size: clamp(
+    2.488rem,
+    2.2194285714285713rem + 1.342857142857143vw,
+    3.052rem
+  );
+}
+p,
+ol,
+ul {
+  font-size: 1rem;
+  font-size: clamp(
+    1rem,
+    0.9404761904761905rem + 0.2976190476190476vw,
+    1.125rem
+  );
+  line-height: 1.4;
+}
+code {
+  /* simply looks more pleasing when this is smaller that regular text */
+  font-size: 0.833rem;
+  font-size: clamp(
+    0.833rem,
+    0.7534761904761904rem + 0.3976190476190477vw,
+    1rem
+  );
+  color: var(--accent-1);
+  background: var(--bg-2);
+}
+
+/* GENERAL STYLING */
 body {
   background: var(--bg-1);
-  color: var(--text-2);
   max-width: 62rem;
   margin: 0 auto;
   padding: 0 1rem;
-  font-family: "Ubuntu Mono", monospace;
 }
 
 @media (min-width: 64rem) {
@@ -32,25 +82,8 @@ body {
   }
 }
 
-h1,
-h2,
-strong,
-em {
-  color: var(--text-1);
-}
-
-p,
-ol,
-ul {
-  line-height: 1.4;
-}
-
 ol > li {
   margin-bottom: 0.75rem;
-}
-
-code {
-  color: var(--accent-1);
 }
 
 a {
