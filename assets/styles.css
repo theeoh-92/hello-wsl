@@ -79,17 +79,18 @@ ol > li {
   margin-bottom: 0.75rem;
 }
 
-a {
+/* link component */
+.link {
   color: var(--primary-1);
   text-decoration: none;
   transition: all 0.2s;
 }
-a:visited {
+.link:visited {
   color: var(--accent-2);
 }
-a:hover,
-a:active,
-a:focus {
+.link:hover,
+.link:active,
+.link:focus {
   color: var(--primary-2);
   text-decoration: underline;
 }
